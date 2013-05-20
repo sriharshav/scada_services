@@ -51,7 +51,7 @@ Scada Services is an experimental setup to host SCADA webservices backed with re
 
 - Create virtual port pair COM7-COM8 using Null-modem emulator
 -	Download Free version of Modbus slave simulator from mobusdriver.com and place it in tools folder
-- Download release version of redis-server from MSOpenTech / redis 
+- Download release version of redis-server from MSOpenTech / redis  and place it in tools folder
 
 ##Starting app##
 

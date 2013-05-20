@@ -31,4 +31,4 @@ end
 #---------------------------
 # Resource routes
 #---------------------------
-require_relative "routes/tags.rb"
+require_relative "routes/energy.rb"

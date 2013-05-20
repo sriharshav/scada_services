@@ -1,0 +1,16 @@
+energy:
+ import:
+  l1 : importl1
+  l2 : importl2
+  l3 : importl3
+  total : importtotal
+ export:
+  l1 : exportl1
+  l2 : exportl2
+  l3 : exportl3
+  total : exporttotal
+ net:
+  l1 : netl1
+  l2 : netl2
+  l3 : netl3
+  total : nettotal  

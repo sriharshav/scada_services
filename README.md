@@ -24,10 +24,10 @@ Scada Services is an experimental setup to host SCADA webservices backed with re
 	
 	*When working behing corporte firewalls, try offline installation*
 	
-	1. Download [bundler gem](https://rubygems.org/gems/bundler)
-	2. Open command prompt
-	3. Change to directory where gem is downloaded
-	4. Execute
+  1. Download [bundler gem](https://rubygems.org/gems/bundler)
+  2. Open command prompt
+  3. Change to directory where gem is downloaded
+  4. Execute
 	
 			gem install bundler-1.3.5.gem
 
@@ -49,9 +49,9 @@ Scada Services is an experimental setup to host SCADA webservices backed with re
     
     bundle install --path vendor/bundle
 
-- Create virtual port pair COM7-COM8 using Null-modem emulator
--	Download Free version of Modbus slave simulator from mobusdriver.com and place it in tools folder
-- Download release version of redis-server from MSOpenTech / redis  and place it in tools folder
+- Create virtual port pair COM7-COM8 using [Null-modem emulator](http://com0com.sourceforge.net/)
+-	Download Free version of Modbus slave simulator from [mobusdriver.com](http://mobusdriver.com) and place it in tools folder
+- Download release version of redis-server from [MSOpenTech / redis](https://github.com/MSOpenTech/redis/tree/2.6/bin/release)  and place it in tools folder
 
 ##Starting app##
 

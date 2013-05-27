@@ -20,32 +20,39 @@ Scada Services is an experimental setup to host SCADA webservices backed with re
 	
 - ###Install [foreman gem 0.61.0](https://rubygems.org/gems/foreman/versions/0.61.0)###
 	
-	  gem install foreman -v 0.61.0
+		 gem install foreman -v 0.61.0
 	
 - ###Clone source###
 
 	Clone repo
 	
-    git clone https://github.com/sriharshav/scada_services.git
+		 git clone https://github.com/sriharshav/scada_services.git
 	
 ##System setup and dependencies##
 
 - Install ruby gems in Gemfile with 
     
-       bundle install --path vendor/bundle
+		 bundle install --path vendor/bundle
 
 - Create virtual port pair COM7-COM8 using [Null-modem emulator](http://com0com.sourceforge.net/)
 -	Download Free version of Modbus slave simulator from [mobusdriver.com](http://mobusdriver.com) and place it in tools folder
 - Download release version of redis-server from [MSOpenTech / redis](https://github.com/MSOpenTech/redis/tree/2.6/bin/release)  and place it in tools folder
 
-##Starting app##
+##Starting server##
 
-1. Open command prompt
-2. Change to directory where source is cloned
-3. Execute
+Execute following command from source directory
 
-      	foreman start
+		 foreman start
 
+*Wait till sinatra service is up and running
+
+##Test REST API##
+
+*curl is built-in rest client.*
+
+1. Getting energy of meter1
+
+		 curl http://localhost/meters/1/energy
 
 ----
 

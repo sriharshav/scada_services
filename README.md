@@ -16,38 +16,23 @@ Scada Services is an experimental setup to host SCADA webservices backed with re
 
 - ###Install [bundler gem](https://rubygems.org/gems/bundler)###
 
-	Open command prompt and execute
-	  
 		 gem install bundler
 	
-	######Offline installation######
-	
-	*When working behing corporte firewalls, try offline installation*
-	
-  1. Download [bundler gem](https://rubygems.org/gems/bundler)
-  2. Open command prompt
-  3. Change to directory where gem is downloaded
-  4. Execute
-	
-			gem install bundler-1.3.5.gem
-
 - ###Install [foreman gem 0.61.0](https://rubygems.org/gems/foreman/versions/0.61.0)###
 	
-	Open command prompt and execute
-	  
-	      gem install foreman -v 0.61.0
+	  gem install foreman -v 0.61.0
 	
 - ###Clone source###
 
-	Clone from
+	Clone repo
 	
-		git clone https://github.com/sriharshav/scada_services.git
+    git clone https://github.com/sriharshav/scada_services.git
 	
 ##System setup and dependencies##
 
-- Install ruby gems with 
+- Install ruby gems in Gemfile with 
     
-    bundle install --path vendor/bundle
+       bundle install --path vendor/bundle
 
 - Create virtual port pair COM7-COM8 using [Null-modem emulator](http://com0com.sourceforge.net/)
 -	Download Free version of Modbus slave simulator from [mobusdriver.com](http://mobusdriver.com) and place it in tools folder

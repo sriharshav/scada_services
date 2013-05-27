@@ -42,13 +42,13 @@ Scada Services is an experimental setup to host SCADA webservices backed with re
 
 Execute following command from source directory
 
-		 foreman start
+	 foreman start
 
-*Wait till sinatra service is up and running
+*Wait till sinatra service is up and running*
 
 ##Test REST API##
 
-*curl is built-in rest client.*
+*curl comes default with msys git.*
 
 1. Getting energy of meter1
 

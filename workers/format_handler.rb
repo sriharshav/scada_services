@@ -12,9 +12,15 @@ def format_template(n, i)
   if (n.kind_of?(Hash))
     n.each_pair do | key, value |
       if value.kind_of?(String)
-        n[key] = @redcli.get "em#{i}#{value}"
+        val = @redcli.get "em#{i}#{value}"
+        if(val)
+          n[key] = val
+        else
+          n.delete(key)
+        end
       else
         format_template(value, i)
+        n.delete_if {|key, value| value == {} } 
       end
     end
   end

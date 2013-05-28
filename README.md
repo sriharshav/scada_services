@@ -6,20 +6,19 @@ Scada services with redis and web sockets
 ###Introduction###
 Scada Services is an experimental setup to host SCADA webservices backed with redis store and with support of web sockets.
 
-###Installation (Windows 7 and above)###
+###Installation###
 
-- ####Install [ruby](http://rubyinstaller.org/downloads/)####
+- ####Install ruby###
 
-	- *Prefer Ruby 2.0.0-p0*
+ *Windows steps*
+
+  - Download [ruby installer](http://rubyinstaller.org/downloads/)
 	- *Select to add ruby to path*
 	- *Prefer default installation path C:\Ruby200*    
 
-- ####Install [bundler gem](https://rubygems.org/gems/bundler)####
+- ####Install ruby gems [bundler gem](https://rubygems.org/gems/bundler) [foreman gem 0.61.0](https://rubygems.org/gems/foreman/versions/0.61.0)####
 
 		 gem install bundler
-	
-- ####Install [foreman gem 0.61.0](https://rubygems.org/gems/foreman/versions/0.61.0)####
-	
 		 gem install foreman -v 0.61.0
 	
 - ####Clone source####
@@ -30,11 +29,15 @@ Scada Services is an experimental setup to host SCADA webservices backed with re
 	
 ###System setup and dependencies###
 
-- Install ruby gems in Gemfile with 
+- Install ruby gems in Gemfile
     
 		 bundle install --path vendor/bundle
 
-- Download release version of redis-server from [MSOpenTech / redis](https://github.com/MSOpenTech/redis/tree/2.6/bin/release)  and place it in tools folder
+- Compile/Download redis-server and place in folder accessible from system PATH environment
+
+ *Windows steps*
+ 
+ Download release version of redis-server from [MSOpenTech / redis](https://github.com/MSOpenTech/redis/tree/2.6/bin/release)
 
 ###Starting server###
 

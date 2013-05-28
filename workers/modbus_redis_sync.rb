@@ -20,11 +20,16 @@ modbus_map = [
 rc = Redis.new()
 cl = RTUClient.new('COM8', 25600)
 
-rc.sadd('meters', (1..6).map {|i| "em#{i}"})
+MODBUS_HR_KEY = 'modbus_hr'
 
+rc.sadd('meters', (1..6).map {|i| "em#{i}"})
+(0..119).each { |i| rc.rpush(MODBUS_HR_KEY, 0)}
 while (true)
   data = []
   cl.with_slave(1) do |slave|
+
+    slave.holding_registers[0..119] = rc.lrange(MODBUS_HR_KEY, 0, 119).map { |v| v.to_i }
+
     res = slave.read_holding_registers 0, 120 
     res.each_with_index do |v, i|
       meter_index = (i / 20)
@@ -35,11 +40,10 @@ while (true)
         data.push << key << v
       end
     end
-    slave.holding_registers[0..119] = res.map { |x| x + 1 } 
+
   end
   rc.mset data
 end
-
 cl.close
 rc.quit
 

@@ -1,4 +1,4 @@
-$(document).ready(function(){
+function subscribe_WS(){
   if ('WebSocket' in window) {
 
     var loc = window.location, wsUri;
@@ -27,4 +27,4 @@ $(document).ready(function(){
   } else {
     alert('Web sockets are not supported on this browser');
   }
-});
+};

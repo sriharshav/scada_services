@@ -1,0 +1,26 @@
+@media (min-width: 980px) {
+  body { 
+    padding-top: 60px; 
+    padding-bottom: 40px; 
+  }
+}
+
+#meters {
+  table {
+    width:100%;
+    text-align:left;
+
+    caption {
+      text-align:left;
+    }
+    th {
+      text-transform:capitalize;
+      width:50px;
+    }
+
+    th, td {
+      text-indent:5px;
+    }
+
+  }
+}

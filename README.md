@@ -10,28 +10,30 @@ Scada Services is an experimental setup to host SCADA webservices backed with re
 
 - ####Install ruby###
 
- *Windows steps*
+  Install ruby 2.0 and make it available in folder accessible from PATH.
+  
+  *Windows steps*
 
   - Download [ruby installer](http://rubyinstaller.org/downloads/)
-	- *Select to add ruby to path*
-	- *Prefer default installation path C:\Ruby200*    
+  - *Select to add ruby to path*
+  - *Prefer default installation path C:\Ruby200*    
 
-- ####Install ruby gems [bundler gem](https://rubygems.org/gems/bundler) and [foreman](https://rubygems.org/gems/foreman)####
+- ####Install ruby gems [bundler](https://rubygems.org/gems/bundler) and [foreman](https://rubygems.org/gems/foreman)####
 
 		 gem install bundler
 		 gem install foreman
 
-   *Note for Windows*
+   *Note for Windows* Prefer version 0.61.0
 
-    Prefer version 0.61.0
-
-      gem install foreman -v 0.61.0
+         gem install foreman -v 0.61.0
 	
-- Compile/Download redis-server and place in folder accessible from system PATH environment
-
- *Windows steps*
+- ####Compile/Download redis-server#### 
  
- Download release version of redis-server from [MSOpenTech / redis](https://github.com/MSOpenTech/redis/tree/2.6/bin/release)
+  Download 2.6.x version, compile and place it in folder accessible from system PATH environment
+
+  *Windows steps*
+ 
+  Download release version of redis-server from [MSOpenTech / redis](https://github.com/MSOpenTech/redis/tree/2.6/bin/release)
 
 - ####Clone source####
 
@@ -39,7 +41,7 @@ Scada Services is an experimental setup to host SCADA webservices backed with re
 	
 		 git clone https://github.com/sriharshav/scada_services.git
 	
-- Install ruby gems in Gemfile
+- ####Install ruby gems in Gemfile####
     
 		 bundle install --path vendor/bundle
 
@@ -69,7 +71,7 @@ Execute following command from source directory
 
 ###Modbus mapping###
 
-Assumes modbus mapping is in doc/modbus\_mapping.txt
+Assumed modbus mapping is in doc/modbus\_mapping.txt
 
 ----
 

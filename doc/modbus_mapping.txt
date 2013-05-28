@@ -1,0 +1,25 @@
+
+
+    Modbus mapping          EM1     EM2     EM3     EM4     EM5     EM6
+    Import Energy L1        40001   40021   40041   40061   40081   40101
+    Import Energy L2 *                      40042   40062   40082   40102
+    Import Energy L3 *                      40043   40063   40083   40103
+    Import Energy Total     40004   40024   40044   40064   40084   40104
+    Export Energy L1 #              40025           40065           40105
+    Export Energy L2  * #                           40066           40106
+    Export Energy L3 * #                            40067           40107
+    Export Energy Total  #          40028           40068           40108
+    Net Energy L1  #                40029           40069           40109
+    Net Energy L2 * #                               40070           40110
+    Net Energy L3 * #                               40071           40111
+    Net Energy Total #              40032           40072           40112
+    CT Ratio $                                      40093           40113
+    VT Ratio $                                      40094           40114
+    Power Fail Couter       40015   40035   40055   40075   40095   40115
+    Power Outage Time       40016   40036   40056   40076   40096   40116
+    Active Tariff           40017   40037   40057   40077   40097   40117
+
+    * 3 phase 
+    # 4 quadrant 
+    $ indirect connected 
+

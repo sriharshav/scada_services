@@ -18,7 +18,10 @@ modbus_map = [
 ]
 
 rc = Redis.new()
-cl = RTUClient.new('COM8', 25600)
+
+ms = ModBus::TCPServer.new(8502,1)
+ms.holding_registers = [0] * 120
+ms.start
 
 MODBUS_HR_KEY = 'modbus_hr'
 
@@ -26,24 +29,24 @@ rc.sadd('meters', (1..6).map {|i| "em#{i}"})
 (0..119).each { |i| rc.rpush(MODBUS_HR_KEY, 0)}
 while (true)
   data = []
-  cl.with_slave(1) do |slave|
+  ModBus::TCPClient.connect('127.0.0.1', 8502) do |cl|
+    cl.with_slave(1) do |slave|
 
-    slave.holding_registers[0..119] = rc.lrange(MODBUS_HR_KEY, 0, 119).map { |v| v.to_i }
+      slave.holding_registers[0..119] = rc.lrange(MODBUS_HR_KEY, 0, 119).map { |v| v.to_i }
 
-    res = slave.read_holding_registers 0, 120 
-    res.each_with_index do |v, i|
-      meter_index = (i / 20)
-      tag_index = i % 20
-      if (tags[tag_index] && 
-          (modbus_map[meter_index].index(tag_index) != nil))
-        key = "em#{(meter_index+1)}#{tags[tag_index]}"
-        data.push << key << v
+      res = slave.read_holding_registers 0, 120 
+      res.each_with_index do |v, i|
+        meter_index = (i / 20)
+        tag_index = i % 20
+        if (tags[tag_index] && 
+            (modbus_map[meter_index].index(tag_index) != nil))
+          key = "em#{(meter_index+1)}#{tags[tag_index]}"
+          data.push << key << v
+        end
       end
     end
-
   end
   rc.mset data
 end
-cl.close
+ms.stop
 rc.quit
-

@@ -16,28 +16,32 @@ Scada Services is an experimental setup to host SCADA webservices backed with re
 	- *Select to add ruby to path*
 	- *Prefer default installation path C:\Ruby200*    
 
-- ####Install ruby gems [bundler gem](https://rubygems.org/gems/bundler) [foreman gem 0.61.0](https://rubygems.org/gems/foreman/versions/0.61.0)####
+- ####Install ruby gems [bundler gem](https://rubygems.org/gems/bundler) and [foreman](https://rubygems.org/gems/foreman)####
 
 		 gem install bundler
-		 gem install foreman -v 0.61.0
+		 gem install foreman
+
+   *Note for Windows*
+
+    Prefer version 0.61.0
+
+      gem install foreman -v 0.61.0
 	
+- Compile/Download redis-server and place in folder accessible from system PATH environment
+
+ *Windows steps*
+ 
+ Download release version of redis-server from [MSOpenTech / redis](https://github.com/MSOpenTech/redis/tree/2.6/bin/release)
+
 - ####Clone source####
 
 	Clone repo
 	
 		 git clone https://github.com/sriharshav/scada_services.git
 	
-###System setup and dependencies###
-
 - Install ruby gems in Gemfile
     
 		 bundle install --path vendor/bundle
-
-- Compile/Download redis-server and place in folder accessible from system PATH environment
-
- *Windows steps*
- 
- Download release version of redis-server from [MSOpenTech / redis](https://github.com/MSOpenTech/redis/tree/2.6/bin/release)
 
 ###Starting server###
 
@@ -49,7 +53,7 @@ Execute following command from source directory
 
 ###Test REST API###
 
-*curl comes default with msys git.*
+*Note for Windows* :  curl comes default with msys git.
 
 1. Get energy of meter1
 
@@ -62,6 +66,10 @@ Execute following command from source directory
 3. Get import of all meters
 
 		 curl http://localhost/meters/energy/import
+
+###Modbus mapping###
+
+Assumes modbus mapping is in doc/modbus\_mapping.txt
 
 ----
 

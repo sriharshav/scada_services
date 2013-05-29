@@ -1,0 +1,19 @@
+.tab-pane.active{:id=>"meters"}
+  .row-fluid{'data-bind'=>"foreach:meters"}
+    .span2.well
+      %h2
+        %small
+          %span{'data-bind' => "text:id"}
+          %a.btn.pull-right{'data-bind' => 'click:refresh'}
+            %i.icon-refresh
+      %div{'data-bind' => "foreach:energies"}
+        %table.table-striped.table-bordered.table-hover
+          %caption
+            %h2
+              %small{'data-bind' => 'text:direction'}
+          %tbody{'data-bind' => "foreach:lines"}
+            %tr
+              %th
+                %small{'data-bind' => "text:caption"}
+              %td{'data-bind' => "text:energy"}
+

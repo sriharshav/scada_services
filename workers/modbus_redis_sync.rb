@@ -1,5 +1,6 @@
 require 'rmodbus'
 require 'redis'
+require 'eventmachine'
 
 include ModBus
 
@@ -19,21 +20,20 @@ modbus_map = [
 
 rc = Redis.new()
 
+MODBUS_HR_KEY = 'modbus_hr'
+rc.sadd('meters', (1..6).map {|i| "em#{i}"})
+(0..119).each { |i| rc.rpush(MODBUS_HR_KEY, 0)}
+
 ms = ModBus::TCPServer.new(8502,1)
 ms.holding_registers = [0] * 120
 ms.start
 
-MODBUS_HR_KEY = 'modbus_hr'
-
-rc.sadd('meters', (1..6).map {|i| "em#{i}"})
-(0..119).each { |i| rc.rpush(MODBUS_HR_KEY, 0)}
 while (true)
   data = []
+
   ModBus::TCPClient.connect('127.0.0.1', 8502) do |cl|
     cl.with_slave(1) do |slave|
-
       slave.holding_registers[0..119] = rc.lrange(MODBUS_HR_KEY, 0, 119).map { |v| v.to_i }
-
       res = slave.read_holding_registers 0, 120 
       res.each_with_index do |v, i|
         meter_index = (i / 20)
@@ -43,10 +43,11 @@ while (true)
           key = "em#{(meter_index+1)}#{tags[tag_index]}"
           data.push << key << v
         end
-      end
-    end
-  end
+      end #res.each_with_index
+    end #cl.with_slave
+  end #ModBus::TCPClient
   rc.mset data
 end
+
 ms.stop
 rc.quit

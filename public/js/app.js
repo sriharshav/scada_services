@@ -1,21 +1,37 @@
-var metersContent;
+
 $(document).ready(function() {
 
-  //Backup templates and initialize with default view
-  metersContent = $('.tab-content').clone();
-  ko.applyBindings(new MetersViewModel(), $("#meters")[0]);
-
   $('#main-tabs a[data-toggle="tab"]').on('shown', function (e) {
-    switch(e.target.hash) {
-      case "#meters" :
-        var vm = new MetersViewModel();
-        var target = e.target.hash;
-        ko.unBind($(target)[0]);
-        $(target).replaceWith($(target, metersContent).clone());
-        ko.applyBindings(vm, $(target)[0]);
-        break;
-    }
+    switchView(e.target.hash);
   });
 
+  switchView('#meters');
+
+  toastr.options.newestOnTop = false;
+  toastr.options.positionClass = 'toast-bottom-right';
 });
+
+function switchView(anchor) {
+
+  var replaceView = function (viewURL, vm) {
+    $.get(viewURL, function(data) {
+      $('.tab-content').empty();
+      $('.tab-content').append($(data));
+      ko.applyBindings(vm, $(anchor)[0]);
+    });
+  }
+
+  switch(anchor) {
+    case "#meters" :
+      replaceView('_meters.htm', new MetersViewModel());
+      break;
+    case "#reports" :
+      replaceView('_reports.htm', new ReportsViewModel());
+      break;
+    case "#simulation" :
+      replaceView('_simulation.htm', new SimulationViewModel());
+      break;
+  }
+
+}
 

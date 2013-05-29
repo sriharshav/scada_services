@@ -1,0 +1,13 @@
+.tab-pane.active{:id=>"simulation"}
+  .row-fluid
+    %a.btn.btn-inverse{'data-bind'=>'click:refresh'}
+      %i.icon-refresh.icon-white
+      %span Refresh
+    %a.btn.btn-inverse{'data-bind'=>'click:update', :style => 'margin-left:20px'}
+      %i.icon-circle-arrow-up.icon-white
+      %span Update
+  .row-fluid{'data-bind' => 'foreach:holding_registers', :style => "margin-top:20px"}
+    .input-prepend
+      %span.add-on{'data-bind' => 'text:($index()+40001)'}
+      %input#prependedInput.span4{:type => "text", 'data-bind'=>"value:val"}/
+

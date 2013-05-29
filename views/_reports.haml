@@ -1,2 +1,17 @@
 .tab-pane.active{:id=>"reports"}
-  %p reports
+  .row-fluid
+    %a.btn.btn-inverse{'data-bind'=>'click:refresh'}
+      %i.icon-refresh.icon-white
+      %span Refresh
+  %table.table-striped.table-bordered.table-hover.span9{:style => "margin-top:20px"}
+    %caption Summary of energies (kWh)
+    %thead
+      %tr.info
+        %th.span2 Import
+        %th.span2 Export
+        %th.span2 Net
+    %tbody
+      %tr{'data-bind' => 'with:summaryreport', :style => 'text-align:center'}
+        %td{'data-bind' => 'text:importtotal'}
+        %td{'data-bind' => 'text:exporttotal'}
+        %td{'data-bind' => 'text:nettotal'}

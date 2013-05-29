@@ -19,7 +19,7 @@ get '/meters/energy/?:direction?' do |direction|
   end
   energy_sum = rcli.eval(File.read("templates/sum.lua"), :argv => argv)
   rcli.quit
-  return {:sum => energy_sum}.to_json
+  return energy_sum
 end 
 
 

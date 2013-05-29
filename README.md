@@ -27,7 +27,7 @@ Scada Services is an experimental setup to host SCADA webservices backed with re
 
          gem install foreman -v 0.61.0
 	
-- ####Compile/Download redis-server#### 
+- ####Compile/Download redis-server####
  
   Download 2.6.x version, compile and place it in folder accessible from system PATH environment
 

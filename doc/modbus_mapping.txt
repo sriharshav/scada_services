@@ -1,5 +1,4 @@
 
-
     Modbus mapping          EM1     EM2     EM3     EM4     EM5     EM6
     Import Energy L1        40001   40021   40041   40061   40081   40101
     Import Energy L2 *                      40042   40062   40082   40102
@@ -23,3 +22,9 @@
     # 4 quadrant 
     $ indirect connected 
 
+EM1 - Single Phase Direct Connected 2 quadrant 
+EM2 - Single Phase Direct Connected 4 quadrant
+EM3 - Three  Phase Direct Connected 2 quadrant
+EM4 - Three  Phase Direct Connected 4 quadrant
+EM5 - Three  Phase Indirect Connected 2 quadrant
+EM6 - Three  Phase Indirect Connected 4 quadrant

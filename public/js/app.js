@@ -9,6 +9,8 @@ $(document).ready(function() {
 
   toastr.options.newestOnTop = false;
   toastr.options.positionClass = 'toast-bottom-right';
+
+  subscribe_WS();
 });
 
 function switchView(anchor) {

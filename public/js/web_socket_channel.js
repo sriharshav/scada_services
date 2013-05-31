@@ -16,7 +16,7 @@ function subscribe_WS(){
     }
     connection.onmessage = function(e){
       var message = e.data;
-      $("#message")[0].innerHTML += "<p>" + message + "</p>";
+      toastr.info(message);
     }
     connection.onclose = function(){
       console.log('Connection closed');

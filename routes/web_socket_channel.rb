@@ -2,7 +2,7 @@ set(:watcher, Thread.new do
   redis = Redis.new
   Thread.current['sockets'] = []
  
-  redis.subscribe 'active_tariff' do |on|
+  redis.subscribe 'activeTariffNotifier' do |on|
     on.message do |channel, message|
       Thread.current['sockets'].each do |s|
         s.send message
